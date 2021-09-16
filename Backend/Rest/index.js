@@ -3,7 +3,7 @@ const PORT = 8080;
 
 app.listen(
     PORT,
-    () => console.log('ITS ALIVE')
+    () => console.log('Api is running')
 )
 
 app.get('/nasa',(req,res)=>{
