@@ -1,13 +1,17 @@
 version: "2"
 services:
   node:
+    container_name: rest
     image: "rest:latest"
-    user: "node"
     working_dir: /home/node/app
     environment:
       - NODE_ENV=production
     volumes:
-      - /home/node/app/Backend/Rest
-    expose:
-      - "8087"
+      - /home/node/app
+    networks:
+      - lsio
     command: "npm start"
+
+networks:
+  lsio:
+    external: true
