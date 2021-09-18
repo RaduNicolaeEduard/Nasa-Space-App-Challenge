@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,15 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
-  constructor(private http: HttpClient) {}
-  url = 'http://localhost:8080/calc';
+  constructor() {}
   ngOnInit(): void {
-    this.getData();
+    // this.getData();
   }
 
-  getData() {
-    return this.http.get(this.url).subscribe((res) => {
-      console.log(res);
-    });
-  }
+  
+
 }

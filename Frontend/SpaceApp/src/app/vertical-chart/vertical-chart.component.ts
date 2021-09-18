@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { productSales } from './data';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 
+@Injectable()
 @Component({
   selector: 'app-vertical-chart',
   templateUrl: './vertical-chart.component.html',
@@ -14,16 +13,16 @@ export class VerticalChartComponent {
   view: number[] = [700, 370];
 
   // options
-  legendTitle: string = 'Products';
-  legendTitleMulti: string = 'Months';
-  legendPosition: string = 'below'; // ['right', 'below']
-  legend: boolean = true;
+  // legendTitle: string = '';
+  // legendTitleMulti: string = 'Months';
+  // legendPosition: string = 'below'; // ['right', 'below']
+  // legend: boolean = true;
 
   xAxis: boolean = true;
   yAxis: boolean = true;
 
-  yAxisLabel: string = 'Sales';
-  xAxisLabel: string = 'Products';
+  yAxisLabel: string = 'Average';
+  xAxisLabel: string = 'Months';
   showXAxisLabel: boolean = true;
   showYAxisLabel: boolean = true;
 
@@ -33,16 +32,16 @@ export class VerticalChartComponent {
   trimYAxisTicks: boolean = false;
   rotateXAxisTicks: boolean = false;
 
-  xAxisTicks: any[] = [
-    'Genre 1',
-    'Genre 2',
-    'Genre 3',
-    'Genre 4',
-    'Genre 5',
-    'Genre 6',
-    'Genre 7',
+
+  maxOutput = 11; //request maxyearlyoutput from api
+  yAxisTicks: any[] = [
+    0,
+    Math.ceil(this.maxOutput / 5),
+    Math.ceil(this.maxOutput / 2) - 1,
+    Math.ceil(this.maxOutput / 2) + 1,
+    Math.ceil(this.maxOutput - this.maxOutput / 5),
+    Math.ceil(this.maxOutput),
   ];
-  yAxisTicks: any[] = [100, 1000, 2000, 5000, 7000, 10000];
 
   animations: boolean = true; // animations on load
 
