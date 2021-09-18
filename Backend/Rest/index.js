@@ -5,18 +5,16 @@ const PORT = 8080;
 const axios = require("axios");
 const func = require("./functions");
 
-app.use(cors);
-
-var corsOptions = {
-  origin: "*",
-};
+app.use(cors({
+  origin: '*'
+}));
 
 const result = func.add(4, 4);
 console.log(result);
 
 app.listen(PORT, () => console.log("Api is running on Port " + PORT));
 
-app.get("/test", cors(corsOptions), async (req, res) => {
+app.get("/test", async (req, res) => {
   try {
     const response = await axios({
       url: "https://power.larc.nasa.gov/api/temporal/daily/openapi.json",
