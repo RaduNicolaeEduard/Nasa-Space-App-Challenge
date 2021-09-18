@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 export interface reqResult {
@@ -18,13 +18,21 @@ export interface reqResult {
 })
 export class DataService {
   url = 'https://api.nicolae.systems/calc';
-
+  currentData: reqResult = {
+    data: {
+      Date: '',
+      MonthlyAverage: '',
+    },
+    properties: {
+      MaxYearlyOutput: 0,
+      AverageYearlyOutput: '',
+    },
+  };
   constructor(private http: HttpClient) {}
 
   getData() {
     return this.http.get<reqResult>(this.url).pipe(
       map((res: any) => {
-        // console.log(res);
         var dataArray: reqResult = {
           data: {
             Date: '',
@@ -33,20 +41,27 @@ export class DataService {
           properties: {
             MaxYearlyOutput: 0,
             AverageYearlyOutput: '',
-          }
+          },
         };
 
-        dataArray = res;
-        // for (const key in res) {
-        //   if (res.hasOwnProperty(key)) {
-        //     console.log(res[key]);
-
-        //     // dataArray.push({ ...res[key] });
-        //   }
-        // }
-        // console.log(dataArray);
+        this.currentData = dataArray;
         return res;
       })
     );
+  }
+
+  getyAxisTicks() {
+    var currentlyAxisTicks: number[];
+    this.getData().subscribe((_) => {
+      var maxYearlyOutput = this.currentData.properties.MaxYearlyOutput;
+      currentlyAxisTicks = [
+        0,
+        Math.ceil(maxYearlyOutput / 5),
+        Math.ceil(maxYearlyOutput / 2) - 1,
+        Math.ceil(maxYearlyOutput / 2) + 1,
+        Math.ceil(maxYearlyOutput - maxYearlyOutput / 5),
+        Math.ceil(maxYearlyOutput),
+      ];
+    });
   }
 }

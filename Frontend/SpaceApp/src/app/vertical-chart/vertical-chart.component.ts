@@ -10,10 +10,11 @@ import { reqResult } from '../data.service';
   styleUrls: ['./vertical-chart.component.css'],
 })
 export class VerticalChartComponent implements OnInit {
-  timedData?: { Date: string; MonthlyAverage: string; };
-  maxYearlyOutput?: number;
+  timedData?: { Date: string; MonthlyAverage: string };
+  maxYearlyOutput: number = 0;
 
   view: number[] = [700, 370];
+  yAxisTicks: number[] = [];
 
   // options
   // legendTitle: string = '';
@@ -36,15 +37,7 @@ export class VerticalChartComponent implements OnInit {
   trimYAxisTicks: boolean = false;
   rotateXAxisTicks: boolean = false;
 
-  maxOutput = 11; //request maxyearlyoutput from api
-  yAxisTicks: any[] = [
-    0,
-    Math.ceil(this.maxOutput / 5),
-    Math.ceil(this.maxOutput / 2) - 1,
-    Math.ceil(this.maxOutput / 2) + 1,
-    Math.ceil(this.maxOutput - this.maxOutput / 5),
-    Math.ceil(this.maxOutput),
-  ];
+  // maxOutput = 11; //request maxyearlyoutput from api
 
   animations: boolean = true; // animations on load
 
@@ -66,16 +59,13 @@ export class VerticalChartComponent implements OnInit {
 
   roundEdges: boolean = false;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.dataService.getData().subscribe((res) => {
       this.timedData = res.data;
       this.maxYearlyOutput = res.properties.MaxYearlyOutput;
-      // console.log(this.timedData);
-      // console.log(this.maxYearlyOutput);
-      // console.log(res);
-      console.log(this.maxYearlyOutput);
-      
-      
+      console.log('max output in get: ' + this.maxYearlyOutput);
+
+      this.yAxisTicks = this.dataService.getyAxisTicks();
     });
   }
 
