@@ -32,7 +32,7 @@ app.get("/calc", async (req, res) => {
     method: "get",
   });
   func
-    .parseWholeYear(5, 50, response.data.properties.parameter.ALLSKY_SFC_SW_DWN)
+    .parseWholeYear(5, 20, response.data.properties.parameter.ALLSKY_SFC_SW_DWN)
     .then((data) => {
       res.status(200).json(data);
     });
