@@ -30,7 +30,7 @@ async function parseWholeYear(size, efficiency, yearData) {
     }
   }
 
-  return {"data":transformedArray,"proprieties":properties};
+  return {"data":transformedArray,"properties":properties};
 }
 
 module.exports = { add, powerOutput, parseWholeYear };
