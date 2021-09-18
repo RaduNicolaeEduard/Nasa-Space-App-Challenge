@@ -22,10 +22,10 @@ async function parseWholeYear(size, efficiency, yearData) {
       var d = new Date(month);
       var monthName=months[d.getMonth()];
       poweroutputdata = powerOutput(size, efficiency, yearData[key])
-      transformedArray.push({Date:monthName,"Monthly Average":poweroutputdata})
+      transformedArray.push({Date:monthName,MonthlyAverage:poweroutputdata})
     }else{
       a = poweroutputdata = powerOutput(size, efficiency, yearData[key])
-      b = Math.max.apply(Math, transformedArray.map(function(o) { return o['Monthly Average']; }))
+      b = Math.max.apply(Math, transformedArray.map(function(o) { return o.MonthlyAverage; }))
       properties = {MaxYearlyOutput:b,AverageYearlyOutput:a}
     }
   }
