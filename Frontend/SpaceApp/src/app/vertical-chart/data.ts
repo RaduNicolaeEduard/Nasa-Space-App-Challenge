@@ -1,24 +1,18 @@
 export var productSales = [
     {
       "name": "book",
-      "value": 5001
+      "value": 5
     }, {
       "name": "graphic card",
-      "value": 7322
+      "value": 7.3
     }, {
       "name": "desk",
-      "value": 1726
+      "value": 1.7
     }, {
       "name": "laptop",
-      "value": 2599
+      "value": 2.5
     }, {
       "name": "monitor",
-      "value": 705
+      "value": 7
     }
   ];
-  
-  
-  export var productSalesMulti = [
-
-  ]
-  
