@@ -10,7 +10,7 @@ app.use(cors({
 }));
 
 const result = func.add(4, 4);
-console.log(result);
+// console.log(result);
 
 app.listen(PORT, () => console.log("Api is running on Port " + PORT));
 

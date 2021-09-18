@@ -1,5 +1,7 @@
-import { Component, Injectable } from '@angular/core';
-import { productSales } from './data';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { DataService } from '../data.service';
+import { reqResult } from '../data.service';
 
 @Injectable()
 @Component({
@@ -7,8 +9,9 @@ import { productSales } from './data';
   templateUrl: './vertical-chart.component.html',
   styleUrls: ['./vertical-chart.component.css'],
 })
-export class VerticalChartComponent {
-  productSales: any[] | undefined;
+export class VerticalChartComponent implements OnInit {
+  timedData?: { Date: string; MonthlyAverage: string; };
+  maxYearlyOutput?: number;
 
   view: number[] = [700, 370];
 
@@ -18,6 +21,7 @@ export class VerticalChartComponent {
   // legendPosition: string = 'below'; // ['right', 'below']
   // legend: boolean = true;
 
+  constructor(private dataService: DataService) {}
   xAxis: boolean = true;
   yAxis: boolean = true;
 
@@ -31,7 +35,6 @@ export class VerticalChartComponent {
   trimXAxisTicks: boolean = false;
   trimYAxisTicks: boolean = false;
   rotateXAxisTicks: boolean = false;
-
 
   maxOutput = 11; //request maxyearlyoutput from api
   yAxisTicks: any[] = [
@@ -63,11 +66,18 @@ export class VerticalChartComponent {
 
   roundEdges: boolean = false;
 
-  constructor() {
-    Object.assign(this, { productSales });
+  ngOnInit() {
+    this.dataService.getData().subscribe((res) => {
+      this.timedData = res.data;
+      this.maxYearlyOutput = res.properties.MaxYearlyOutput;
+      // console.log(this.timedData);
+      // console.log(this.maxYearlyOutput);
+      // console.log(res);
+      console.log(this.maxYearlyOutput);
+      
+      
+    });
   }
-
-  ngOnInit(): void {}
 
   onSelect(event: any) {
     console.log(event);

@@ -10,6 +10,7 @@ import { MainComponent } from './main/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VerticalChartComponent } from './vertical-chart/vertical-chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [AppComponent, MainComponent, VerticalChartComponent],
@@ -23,7 +24,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     NgxChartsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
