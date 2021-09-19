@@ -6,12 +6,15 @@ services:
     working_dir: /home/node/app
     environment:
       - NODE_ENV=production
-    volumes:
-      - /home/node/app
     networks:
       - lsio
     command: "npm start"
 
+  node:
+    container_name: angular
+    image: "angular:latest"
+    networks:
+      - lsio
 networks:
   lsio:
     external: true
