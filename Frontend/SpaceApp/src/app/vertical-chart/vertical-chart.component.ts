@@ -65,7 +65,7 @@ export class VerticalChartComponent implements OnInit {
       this.maxYearlyOutput = res.properties.MaxYearlyOutput;
       console.log('max output in get: ' + this.maxYearlyOutput);
 
-      this.yAxisTicks = this.dataService.getyAxisTicks();
+      // this.yAxisTicks = this.dataService.getyAxisTicks();
     });
   }
 
