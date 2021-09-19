@@ -10,7 +10,7 @@ services:
       - lsio
     command: "npm start"
 
-  node:
+  node1:
     container_name: angular
     image: "angular:latest"
     networks:
