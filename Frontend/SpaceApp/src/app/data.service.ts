@@ -17,7 +17,7 @@ export interface reqResult {
   providedIn: 'root',
 })
 export class DataService {
-  url = 'http://localhost:8080/calc';
+  url = 'https://api.nicolae.systems/calc';
   currentData: reqResult = {
     data: {
       name: '',
