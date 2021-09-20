@@ -1,8 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 import { DataService } from '../data.service';
 import { reqResult } from '../data.service';
-
 @Injectable()
 @Component({
   selector: 'app-vertical-chart',
@@ -10,12 +9,21 @@ import { reqResult } from '../data.service';
   styleUrls: ['./vertical-chart.component.css'],
 })
 export class VerticalChartComponent implements OnInit {
-  timedData?: { Date: string; MonthlyAverage: string };
+  timedData: any = [];
   maxYearlyOutput: number = 0;
 
   view: number[] = [700, 370];
   yAxisTicks: number[] = [];
-
+  currentData: reqResult = {
+    data: {
+      name: '',
+      value: '',
+    },
+    properties: {
+      MaxYearlyOutput: 0,
+      AverageYearlyOutput: '',
+    },
+  };
   // options
   // legendTitle: string = '';
   // legendTitleMulti: string = 'Months';
@@ -60,14 +68,48 @@ export class VerticalChartComponent implements OnInit {
   roundEdges: boolean = false;
 
   ngOnInit(): void {
-    this.dataService.getData().subscribe((res) => {
-      this.timedData = res.data;
-      this.maxYearlyOutput = res.properties.MaxYearlyOutput;
-      console.log('max output in get: ' + this.maxYearlyOutput);
+    this.dataService
+      .getData()
+      .pipe(
+        finalize(() => {
+          console.log('req ended');
+          console.log(this.timedData);
+        })
+      )
+      .subscribe((res) => {
+        console.log('res ' + res);
 
-      // this.yAxisTicks = this.dataService.getyAxisTicks();
-    });
+        this.timedData = res.data;
+        this.maxYearlyOutput = res.properties.MaxYearlyOutput;
+        console.log('max output in get: ' + this.maxYearlyOutput);
+        this.currentData = this.dataService.currentData;
+      });
   }
+
+  getTimedData() {
+    return this.timedData;
+  }
+
+  // getYaxisTicks() {
+  //   return this.yAxisTicks;
+  // }
+
+  // getyAxisTicks() {
+  //   var currentlyAxisTicks: number[];
+  //   var maxYearlyOutput = this.maxYearlyOutput;
+
+  //   currentlyAxisTicks = [
+  //     0,
+  //     Math.ceil(maxYearlyOutput / 5),
+  //     Math.ceil(maxYearlyOutput / 2) - 1,
+  //     Math.ceil(maxYearlyOutput / 2) + 1,
+  //     Math.ceil(maxYearlyOutput - maxYearlyOutput / 5),
+  //     Math.ceil(maxYearlyOutput),
+  //   ];
+  //   console.log(currentlyAxisTicks);
+
+  //   return currentlyAxisTicks;
+  // }
 
   onSelect(event: any) {
     console.log(event);

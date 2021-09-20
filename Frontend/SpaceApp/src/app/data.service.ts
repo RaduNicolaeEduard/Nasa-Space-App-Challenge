@@ -4,8 +4,8 @@ import { map } from 'rxjs/operators';
 
 export interface reqResult {
   data: {
-    Date: string;
-    MonthlyAverage: string;
+    name: string;
+    value: string;
   };
   properties: {
     MaxYearlyOutput: number;
@@ -17,11 +17,11 @@ export interface reqResult {
   providedIn: 'root',
 })
 export class DataService {
-  url = 'https://api.nicolae.systems/calc';
+  url = 'http://localhost:8080/calc';
   currentData: reqResult = {
     data: {
-      Date: '',
-      MonthlyAverage: '',
+      name: '',
+      value: '',
     },
     properties: {
       MaxYearlyOutput: 0,
@@ -31,37 +31,13 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   getData() {
-    return this.http.get<reqResult>(this.url).pipe(
+    return this.http.get<reqResult[]>(this.url).pipe(
       map((res: any) => {
-        var dataArray: reqResult = {
-          data: {
-            Date: '',
-            MonthlyAverage: '',
-          },
-          properties: {
-            MaxYearlyOutput: 0,
-            AverageYearlyOutput: '',
-          },
-        };
-
-        this.currentData = dataArray;
+        this.currentData = res;
         return res;
       })
     );
   }
 
-  getyAxisTicks() {
-    var currentlyAxisTicks: number[];
-    this.getData().subscribe((_) => {
-      var maxYearlyOutput = this.currentData.properties.MaxYearlyOutput;
-      currentlyAxisTicks = [
-        0,
-        Math.ceil(maxYearlyOutput / 5),
-        Math.ceil(maxYearlyOutput / 2) - 1,
-        Math.ceil(maxYearlyOutput / 2) + 1,
-        Math.ceil(maxYearlyOutput - maxYearlyOutput / 5),
-        Math.ceil(maxYearlyOutput),
-      ];
-    });
-  }
+
 }
