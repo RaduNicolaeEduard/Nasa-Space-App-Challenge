@@ -6,7 +6,7 @@ import { reqResult } from '../data.service';
 @Component({
   selector: 'app-vertical-chart',
   templateUrl: './vertical-chart.component.html',
-  styleUrls: ['./vertical-chart.component.css'],
+  styleUrls: ['./vertical-chart.component.scss'],
 })
 export class VerticalChartComponent implements OnInit {
   timedData: any = [];
