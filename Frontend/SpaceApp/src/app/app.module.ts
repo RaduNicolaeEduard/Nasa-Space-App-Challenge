@@ -15,7 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [AppComponent, MainComponent, VerticalChartComponent, HeaderComponent],
@@ -30,7 +30,8 @@ import {MatIconModule} from '@angular/material/icon';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent],
