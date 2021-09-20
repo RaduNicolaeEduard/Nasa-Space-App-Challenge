@@ -1,42 +1,119 @@
-<mat-card class="card-vertical-char">
-    <mat-card-header>
-      <div mat-card-avatar class="header-image"></div>
-      <mat-card-title>Vertical View</mat-card-title>
-      <mat-card-subtitle>Evolution Chart</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <ngx-charts-bar-vertical
-        [results]="getTimedData()"
-        [gradient]="gradient"
-        [xAxis]="xAxis"
-        [yAxis]="yAxis"
-        [view]="[700, 370]"
-        [showXAxisLabel]="showXAxisLabel"
-        [showYAxisLabel]="showYAxisLabel"
-        [xAxisLabel]="xAxisLabel"
-        [yAxisLabel]="yAxisLabel"
-        [animations]="animations"
-        [showGridLines]="showGridLines"
-        [trimXAxisTicks]="trimXAxisTicks"
-        [trimYAxisTicks]="trimYAxisTicks"
-        [rotateXAxisTicks]="rotateXAxisTicks"
-        [maxXAxisTickLength]="maxXAxisTickLength"
-        [maxYAxisTickLength]="maxYAxisTickLength"
-        [xAxisTickFormatting]="formatString"
-        [yAxisTickFormatting]="formatNumber"
-        [yAxisTicks]="yAxisTicks"
-        [showDataLabel]="showDataLabel"
-        [barPadding]="barPadding"
-        [tooltipDisabled]="tooltipDisabled"
-        [roundEdges]="roundEdges"
-      >
+<mat-tab-group color="accent" >
+  <mat-tab label="Monthly tab">
+    <mat-card class="card-vertical-char">
+      <mat-card-header>
+        <div mat-card-avatar class="header-image"></div>
+        <mat-card-title>Vertical View</mat-card-title>
+        <mat-card-subtitle>Evolution Chart</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <ngx-charts-bar-vertical
+          [results]="getTimedData()"
+          [gradient]="gradient"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [view]="[700, 370]"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+          [animations]="animations"
+          [showGridLines]="showGridLines"
+          [trimXAxisTicks]="trimXAxisTicks"
+          [trimYAxisTicks]="trimYAxisTicks"
+          [rotateXAxisTicks]="rotateXAxisTicks"
+          [maxXAxisTickLength]="maxXAxisTickLength"
+          [maxYAxisTickLength]="maxYAxisTickLength"
+          [xAxisTickFormatting]="formatString"
+          [yAxisTickFormatting]="formatNumber"
+          [yAxisTicks]="yAxisTicks"
+          [showDataLabel]="showDataLabel"
+          [barPadding]="barPadding"
+          [tooltipDisabled]="tooltipDisabled"
+          [roundEdges]="roundEdges"
         >
-      </ngx-charts-bar-vertical>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>Monthly</button>
-      <button mat-button>Yearly</button>
-    </mat-card-actions>
-  </mat-card>
-  {{ maxYearlyOutput }}
-  
+          >
+        </ngx-charts-bar-vertical>
+      </mat-card-content>&nbsp;
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Yearly tab">
+    <mat-card class="card-vertical-char">
+      <mat-card-header>
+        <div mat-card-avatar class="header-image"></div>
+        <mat-card-title>Vertical View</mat-card-title>
+        <mat-card-subtitle>Evolution Chart</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <ngx-charts-bar-vertical
+          [results]="getTimedData()"
+          [gradient]="gradient"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [view]="[700, 370]"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+          [animations]="animations"
+          [showGridLines]="showGridLines"
+          [trimXAxisTicks]="trimXAxisTicks"
+          [trimYAxisTicks]="trimYAxisTicks"
+          [rotateXAxisTicks]="rotateXAxisTicks"
+          [maxXAxisTickLength]="maxXAxisTickLength"
+          [maxYAxisTickLength]="maxYAxisTickLength"
+          [xAxisTickFormatting]="formatString"
+          [yAxisTickFormatting]="formatNumber"
+          [yAxisTicks]="yAxisTicks"
+          [showDataLabel]="showDataLabel"
+          [barPadding]="barPadding"
+          [tooltipDisabled]="tooltipDisabled"
+          [roundEdges]="roundEdges"
+        >
+          >
+        </ngx-charts-bar-vertical>
+      </mat-card-content>&nbsp;
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>
+<!-- <mat-card class="card-vertical-char">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>Vertical View</mat-card-title>
+    <mat-card-subtitle>Evolution Chart</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <ngx-charts-bar-vertical
+      [results]="getTimedData()"
+      [gradient]="gradient"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [view]="[700, 370]"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [animations]="animations"
+      [showGridLines]="showGridLines"
+      [trimXAxisTicks]="trimXAxisTicks"
+      [trimYAxisTicks]="trimYAxisTicks"
+      [rotateXAxisTicks]="rotateXAxisTicks"
+      [maxXAxisTickLength]="maxXAxisTickLength"
+      [maxYAxisTickLength]="maxYAxisTickLength"
+      [xAxisTickFormatting]="formatString"
+      [yAxisTickFormatting]="formatNumber"
+      [yAxisTicks]="yAxisTicks"
+      [showDataLabel]="showDataLabel"
+      [barPadding]="barPadding"
+      [tooltipDisabled]="tooltipDisabled"
+      [roundEdges]="roundEdges"
+    >
+      >
+    </ngx-charts-bar-vertical>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Monthly</button>
+    <button mat-button>Yearly</button>
+  </mat-card-actions>
+</mat-card> -->
+{{ maxYearlyOutput }}
