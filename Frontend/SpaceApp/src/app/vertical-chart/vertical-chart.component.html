@@ -1,4 +1,11 @@
-<ngx-charts-bar-vertical
+<mat-card class="card-vertical-char">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>Vertical View</mat-card-title>
+    <mat-card-subtitle>Evolution Chart</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <ngx-charts-bar-vertical
   [results]="timedData"
   [gradient]="gradient"
   [xAxis]="xAxis"
@@ -24,3 +31,9 @@
   [roundEdges]="roundEdges"
 >
 </ngx-charts-bar-vertical>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Monthly</button>
+    <button mat-button>Yearly</button>
+  </mat-card-actions>
+</mat-card>
